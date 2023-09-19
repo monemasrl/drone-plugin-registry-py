@@ -42,8 +42,12 @@ async def init_client() -> None:
     logger.info("Loading settings")
     logger.info(f"Config file: {Settings().drone_config_file}")
 
-    with open(Settings().drone_config_file, "r") as file:
-        registry_list = yaml.safe_load(file)
+    try:
+        with open(Settings().drone_config_file, "r") as file:
+            registry_list = yaml.safe_load(file)
+    except Exception as e:
+        logger.error(e)
+        logger.error("Error loading config file")
 
     logger.debug(f"Registry list: {pformat(registry_list)}")
 
