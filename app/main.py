@@ -5,7 +5,7 @@ import yaml
 from fastapi import FastAPI, Request
 from fastapi.logger import logger
 from pydantic_settings import BaseSettings
-from models import Registry, RegistryRequest
+from app.models import Registry, RegistryRequest
 from hmac_http import verify
 from pprint import pformat
 
